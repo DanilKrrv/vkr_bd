@@ -6,7 +6,6 @@ import com.example.vkrbd.exception.UserNotFoundException;
 import com.example.vkrbd.model.User;
 import com.example.vkrbd.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,7 +14,7 @@ public class UserService {
     private UserRepo userRepo;
 
     public UserEntity registration(UserEntity user) throws UserAlreadyExistException {
-        if(userRepo.findByUsername(user.getUsername()) != null){
+        if(userRepo.findByLogin(user.getLogin()) != null){
             throw new UserAlreadyExistException("Пользователь уже существует");
         }
         return userRepo.save(user);
@@ -28,6 +27,7 @@ public class UserService {
         }
         return User.toModel(user);
     }
+
 
     public Long delete(Long id){
         userRepo.deleteById(id);

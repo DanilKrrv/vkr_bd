@@ -4,6 +4,6 @@ import com.example.vkrbd.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepo extends CrudRepository<UserEntity, Long> {
-    UserEntity findByUsername(String username);
+    UserEntity findByLogin(String login);
 
 }

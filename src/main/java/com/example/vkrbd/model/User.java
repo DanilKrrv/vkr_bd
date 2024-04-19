@@ -7,27 +7,21 @@ import java.util.stream.Collectors;
 
 public class User {
     private Long id;
-    private String username;
-    private List<Todo> todos;
+    private String login;
+    private String FIO;
+
+
+    private List<Attestation> attestations;
 
     public static User toModel(UserEntity entity) {
         User model = new User();
         model.setId(entity.getId());
-        model.setUsername(entity.getUsername());
-        model.setTodos(entity.getTodos().stream().map(Todo::toModel).collect(Collectors.toList()));
+        model.setLogin(entity.getLogin());
+        model.setAttestations(entity.getAttestations().stream().map(Attestation::toModel).collect(Collectors.toList()));
+        model.setFIO(entity.getFIO());
         return model;
     }
 
-    public List<Todo> getTodos() {
-        return todos;
-    }
-
-    public void setTodos(List<Todo> todos) {
-        this.todos = todos;
-    }
-
-    public User() {
-    }
 
     public Long getId() {
         return id;
@@ -37,11 +31,27 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getFIO() {
+        return FIO;
+    }
+
+    public void setFIO(String FIO) {
+        this.FIO = FIO;
+    }
+
+    public List<Attestation> getAttestations() {
+        return attestations;
+    }
+
+    public void setAttestations(List<Attestation> attestations) {
+        this.attestations = attestations;
     }
 }

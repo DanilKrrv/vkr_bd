@@ -3,8 +3,6 @@ package com.example.vkrbd.controller;
 import com.example.vkrbd.entity.UserEntity;
 import com.example.vkrbd.exception.UserAlreadyExistException;
 import com.example.vkrbd.exception.UserNotFoundException;
-import com.example.vkrbd.model.User;
-import com.example.vkrbd.repository.UserRepo;
 import com.example.vkrbd.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +31,7 @@ public class UserController {
     @GetMapping("/")
     public ResponseEntity getUsers() {
         try {
-            return ResponseEntity.ok("Сервер работает");
+            return ResponseEntity.ok(userService.getAll());
         } catch(Exception e) {
             return ResponseEntity.badRequest().body("Произошла ошибка");
         }

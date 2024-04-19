@@ -10,21 +10,14 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
+    private String login;
     private String password;
+    private String FIO;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<TodoEntity> todos;
+    private List<AttestationEntity> attestations;
 
     public UserEntity() {
 
-    }
-
-    public List<TodoEntity> getTodos() {
-        return todos;
-    }
-
-    public void setTodos(List<TodoEntity> todos) {
-        this.todos = todos;
     }
 
     public Long getId() {
@@ -35,12 +28,12 @@ public class UserEntity {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {
@@ -49,5 +42,21 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFIO() {
+        return FIO;
+    }
+
+    public void setFIO(String FIO) {
+        this.FIO = FIO;
+    }
+
+    public List<AttestationEntity> getAttestations() {
+        return attestations;
+    }
+
+    public void setAttestations(List<AttestationEntity> attestations) {
+        this.attestations = attestations;
     }
 }

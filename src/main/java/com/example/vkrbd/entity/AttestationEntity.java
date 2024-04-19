@@ -3,18 +3,36 @@ package com.example.vkrbd.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "todo")
-public class TodoEntity {
+@Table(name = "attestation")
+public class AttestationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private Boolean completed;
+    private Boolean isValid;
+    private String dataPassed;
+
+    public String getDataPassed() {
+        return dataPassed;
+    }
+
+    public void setDataPassed(String dataPassed) {
+        this.dataPassed = dataPassed;
+    }
+
     @ManyToOne
     @JoinColumn(name = "user_id") // ключ в бд
     private UserEntity user; // это связь в юзерэнтити в mappedBy = "user"
 
-    public TodoEntity() {
+    public Boolean getValid() {
+        return isValid;
+    }
+
+    public void setValid(Boolean valid) {
+        isValid = valid;
+    }
+
+    public AttestationEntity() {
     }
 
     public Long getId() {
@@ -33,12 +51,12 @@ public class TodoEntity {
         this.title = title;
     }
 
-    public Boolean getCompleted() {
-        return completed;
+    public Boolean getIsValid() {
+        return isValid;
     }
 
-    public void setCompleted(Boolean completed) {
-        this.completed = completed;
+    public void setIsValid(Boolean isValid) {
+        this.isValid = isValid;
     }
 
     public UserEntity getUser() {
