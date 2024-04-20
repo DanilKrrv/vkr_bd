@@ -12,6 +12,10 @@ public class AttestationEntity {
     private Boolean isValid;
     private String dataPassed;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id") // ключ в бд
+    private UserEntity user; // это связь в юзерэнтити в mappedBy = "user"
+
     public String getDataPassed() {
         return dataPassed;
     }
@@ -20,9 +24,7 @@ public class AttestationEntity {
         this.dataPassed = dataPassed;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "user_id") // ключ в бд
-    private UserEntity user; // это связь в юзерэнтити в mappedBy = "user"
+
 
     public Boolean getValid() {
         return isValid;

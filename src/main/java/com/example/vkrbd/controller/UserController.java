@@ -26,17 +26,6 @@ public class UserController {
             return ResponseEntity.badRequest().body("Произошла ошибка");
         }
     }
-
-/*
-    @GetMapping("/")
-    public ResponseEntity getUsers() {
-        try {
-            return ResponseEntity.ok(userService.getAll());
-        } catch(Exception e) {
-            return ResponseEntity.badRequest().body("Произошла ошибка");
-        }
-    }*/
-
     @GetMapping()
     public ResponseEntity getOneUser(@RequestParam Long id) {
         try {
@@ -47,7 +36,6 @@ public class UserController {
             return ResponseEntity.badRequest().body("Произошла ошибка");
         }
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity deleteUser(@PathVariable Long id){
         try {
@@ -56,4 +44,15 @@ public class UserController {
             return ResponseEntity.badRequest().body("Произошла ошибка");
         }
     }
+
+    /*
+    @GetMapping("/")
+    public ResponseEntity getUsers() {
+        try {
+            return ResponseEntity.ok(userService.getAll());
+        } catch(Exception e) {
+            return ResponseEntity.badRequest().body("Произошла ошибка");
+        }
+    }*/
+
 }
